@@ -1,0 +1,17 @@
+#Use this video to get started
+https://www.youtube.com/watch?v=UmljXZIypDc&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p
+
+
+
+
+#Command to set us up
+django-admin startproject django_site
+
+
+#Design pattern for django is making separate "apps", like a blog app, or a store app within your site. Drag n drop for later
+python manage.py startapp <name> to create an app
+
+#When url routing from global url patters, it chops off the /blog for example when the local app urlpatterns are read
+
+
+#Template inheritence with 'base.html' really important for organization and consistency
