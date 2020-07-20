@@ -1,28 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Post, Rescue_Time_Query
+from .rescue_time import execute
+import time
 
 # Create your views here.
 
 
-posts = [
-    {
-        'author': 'James Salafatinos',
-        'title': 'blog post 1',
-        'content': 'My content',
-        'date_posted':'July 17th, 2020'
-    },
-    {
-        'author': 'James Salvo',
-        'title': 'blog post 2',
-        'content': 'My content',
-        'date_posted':'July 17th, 2020'
-    }
-]
+
 
 def home(request):
     """ Routes traffic"""
     context = {
-        'posts':posts,
+        'posts':Post.objects.all(),
         'title':'Homepage'
     }
 
@@ -30,4 +20,18 @@ def home(request):
 
 def about(request):
     """ Routes traffic"""
-    return render(request, 'blog/about.html', {'title':'About'})
+
+    context = {
+        'queries':Rescue_Time_Query.objects.all()
+    }
+    print(context)
+    return render(request, 'blog/about.html', context)
+
+def reload(request):
+    """ Routes traffic"""
+    execute()
+    print("Executed")
+    context = {
+        'queries':Rescue_Time_Query.objects.all()
+    }
+    return render(request, 'blog/about.html', context)

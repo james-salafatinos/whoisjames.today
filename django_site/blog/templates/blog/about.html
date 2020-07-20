@@ -1,4 +1,6 @@
 {% extends "blog/base.html" %}
 {% block content %}
-      <h2>About Page</h2>
+      {% for q in queries %}
+            <h2>{{q.activity}}</h2>
+      {% endfor %}
 {% endblock content %}
